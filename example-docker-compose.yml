@@ -1,0 +1,15 @@
+# Qual versão do composer irá usar:
+version: '3.9'
+
+services:
+    database:
+        image: mysql # Imagem para utilizar, se não informar a versão será utilizada a versão mais recente
+        platform: linux/x86_64 #apenas linux
+        container_name: bootcamp_cataline
+        command: --default-authentication-plugin=mysql_native_password # Alteração necessária para conseguir se autenticar, devido a convesão Mysql e NPM/Mysql serem diferentes
+        restart: always # Quando der erro se vai reiniciar automaticamente
+        environment:
+            MYSQL_ROOT_PASSWORD: 'sua_senha' # Senha do MySql
+            MYSQL_DATABASE: 'adonis'  # Nome do banco de dados
+        ports:
+            - '3306:3306' # Porta_Local : Porta_Container
